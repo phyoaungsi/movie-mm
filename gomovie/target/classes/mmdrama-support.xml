@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="mailreader-support" namespace="/" extends="drama-default">
+
+        <action name="Welcome">
+            <result>pages/index.jsp</result>
+           
+        </action>
+<!-- 
+ 		<action name="Index" class="com.mmdrama.web.actions.index.IndexAction">
+            <result>pages/index.jsp</result>
+        </action> -->
+        <action name="download" class="com.mmdrama.web.actions.ImageAction">
+           
+			<result name="success" type="stream">
+                <param name="contentType">image/jpeg</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">filename="struts.gif"</param>
+                <param name="bufferSize">4096</param>
+            </result>
+        </action>
+        
+       
+    </package>
+
+   
+</struts>

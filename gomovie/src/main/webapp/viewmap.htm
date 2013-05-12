@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 100% }
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUU7fxPxVpieI7lSHpw3uwp4ukmI8otqI&sensor=false">
+    </script>
+    <script type="text/javascript">
+    var param=window.location.href.split("|");
+       var zoomlevel=Number(param[3]);
+    
+      function initialize() {
+    	var myLatlng=new google.maps.LatLng(param[1], param[2]);
+        var mapOptions = {
+          center: myLatlng,
+          zoom: zoomlevel,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+        
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title:"Hello World!"
+            
+            
+        });
+        
+        google.maps.event.addListener(map, 'click', function(event) {
+        	//alert(event.latLng);
+            placeMarker(event.latLng);
+          });
+
+        
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+      
+     
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"/>
+  </body>
+</html>
